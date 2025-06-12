@@ -38,7 +38,7 @@ Used for development & validation of ESP32 GPIO driver
 
 # Version History
 
-- _(pending)_v0.1 - gpio read()
+- v0.1 - gpio read()
 
 - _(pending)_v0.2 - gpio write()
 

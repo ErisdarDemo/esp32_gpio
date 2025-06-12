@@ -34,14 +34,14 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>appl/demo.c</name>
+			<name>appl/demo_gpio.c</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/appl/demo.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/appl/demo_gpio.c</locationURI>
 		</link>
 		<link>
-			<name>appl/demo.h</name>
+			<name>appl/demo_gpio.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/appl/demo.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/appl/demo_gpio.h</locationURI>
 		</link>
 		<link>
 			<name>core/CMakeLists.txt</name>
@@ -92,6 +92,16 @@
 			<name>lbr/utils.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/lbr/utils.h</locationURI>
+		</link>
+		<link>
+			<name>core/mcu/esp32_gpio.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/core/mcu/esp32_gpio.c</locationURI>
+		</link>
+		<link>
+			<name>core/mcu/esp32_gpio.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/core/mcu/esp32_gpio.h</locationURI>
 		</link>
 		<link>
 			<name>core/mcu/mcu.c</name>

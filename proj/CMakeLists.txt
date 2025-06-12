@@ -19,7 +19,7 @@ set(EXTRA_COMPONENT_DIRS ${CMAKE_CURRENT_LIST_DIR}/../core)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
 # PROJECT_NAME
-project(esp32_base)
+project(esp32_gpio)
 
 # BUG [1]
 set_source_files_properties(${CMAKE_SOURCE_DIR}/components/esp_lcd/rgb/esp_lcd_panel_rgb.c PROPERTIES HEADER_FILE_ONLY TRUE)

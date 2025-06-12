@@ -1,13 +1,13 @@
-#ifndef APPL_DEMO_H
-#define APPL_DEMO_H
+#ifndef APPL_GPIO_DEMO_H
+#define APPL_GPIO_DEMO_H
 
 //************************************************************************************************//
 //                                       FUNCTION DECLARATIONS                                    //
 //************************************************************************************************//
 
 //Public
-extern void demo_routine(int ct);
+extern void demo_gpio(void);
 
 
-#endif /*  APPL_DEMO_H */
+#endif /*  APPL_GPIO_DEMO_H */
 

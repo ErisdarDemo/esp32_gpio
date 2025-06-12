@@ -21,6 +21,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+//Driver Includes
+#include "esp32_gpio.h"
+
 //Project Includes
 #include "system.h"
 
@@ -45,13 +48,10 @@
 /**************************************************************************************************/
 status_code mcu_initialize(void) {
 
-    //Locals
-
-
     //---------------------------------------- Initialize ----------------------------------------//
 
-
-    //------------------------------------------ Operate -----------------------------------------//
+	//Drivers
+	gpio_init();
 
 
     //Notify

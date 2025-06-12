@@ -40,38 +40,7 @@
 #include "system.h"
 
 //Application Includes
-#include "demo.h"
-
-
-//************************************************************************************************//
-//                                        DEFINITIONS & TYPES                                     //
-//************************************************************************************************//
-
-//-----------------------------------------  Definitions -----------------------------------------//
-
-//Timing
-#define SLEEP_DELAY_MS      (2000)                  /* nice loop delay for runtime demo           */
-
-//Demo
-#define MAX_LOOP_CT         (5)                     /* reset after a few loops                    */
-
-
-//************************************************************************************************//
-//                                        DEFINITIONS & TYPES                                     //
-//************************************************************************************************//
-
-//-----------------------------------------  Definitions -----------------------------------------//
-
-//Base Template Version
-#define BASE_TEMPL_VERS         "1"
-
-
-//************************************************************************************************//
-//                                       FUNCTION DECLARATIONS                                    //
-//************************************************************************************************//
-
-//Version API
-static char *baseTempl_getVersion(void);
+#include "demo_gpio.h"
 
 
 //************************************************************************************************//
@@ -96,60 +65,10 @@ static char *baseTempl_getVersion(void);
 /**************************************************************************************************/
 void app_main(void) {
     
-    //Locals
-    int ctr = 0;                                    /* loop counter                               */
-
-	
-	//Notify
-    printf("Demonstration for esp32_base v%s", baseTempl_getVersion());
-	
-	
-    //-------------------------------------- Initialization --------------------------------------//
-
     //Init
     system_initialize();
 
-   
-    //--------------------------------------- Application ----------------------------------------//
-	
-    for(;;) {
-
-        //------------------------------------- Update -------------------------------------------//
-        
-        //C Operate 
-        demo_routine(ctr);
-        
-        //Notify
-        printf("app_main(): loop %d\n\n", ctr++);
-
-        
-        //------------------------------------- Reset --------------------------------------------//
-
-        //Catch
-        if(ctr > MAX_LOOP_CT) {
-            break;
-        }
-
-        //Delay
-        delay_ms(SLEEP_DELAY_MS);
-    }
+    //Test
+    demo_gpio();
 }
 
-
-//************************************************************************************************//
-//                                         PRIVATE FUNCTIONS                                      //
-//************************************************************************************************//
-
-/**************************************************************************************************/
-/** @fcn        char *baseTempl_getVersion(void)
- *  @brief      Retrieve base template project version
- *  @details    major.minor.rev suffixed with "*" for in development from that version
- *
- *  @return   (char *) string reporting version
- *
- *  @note   Derivative identifiers may be omitted (e.g. "*" for published content)
- */
-/**************************************************************************************************/
-static char *baseTempl_getVersion(void) {
-    return BASE_TEMPL_VERS;
-}

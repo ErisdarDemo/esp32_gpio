@@ -16,6 +16,8 @@ idf_component_register(
                          "rtos"
                          "system"
                        PRIV_REQUIRES
+                         driver
+                         esp_timer
                          spi_flash
                        INCLUDE_DIRS
                          "." 

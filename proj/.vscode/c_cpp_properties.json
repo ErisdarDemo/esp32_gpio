@@ -1,0 +1,46 @@
+{
+  "configurations": [
+    {
+        "name":            "ESP-IDF",
+        "compilerPath":    "${config:idf.toolsPathWin}/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc.exe",
+        "compileCommands": "${config:idf.buildPath}/compile_commands.json",
+        "cStandard":       "c17",
+        "cppStandard":     "c++17",
+
+        "includePath": [
+          "${config:idf.espIdfPath}/components/esp_hw_support/include",
+          "${config:idf.espIdfPath}/components/esp_system/include",
+          "${config:idf.espIdfPath}/components/freertos/config/include/freertos",
+          "${config:idf.espIdfPath}/components/freertos/config/xtensa/include",
+          "${config:idf.espIdfPath}/components/freertos/config/xtensa/include/freertos",
+          "${config:idf.espIdfPath}/components/freertos/FreeRTOS-Kernel/include",
+          "${config:idf.espIdfPath}/components/spi_flash/include",
+          "${config:idf.espIdfPath}/components/xtensa/include",
+          "${workspaceFolder}/**",
+          "build/config",
+          "../lbr"
+        ],
+
+        "defines": [
+          "_DEBUG",
+          "UNICODE",
+          "_UNICODE"
+        ],
+
+        "browse": {
+          "path": [
+            "${config:idf.espIdfPath}/components",
+            "${config:idf.espIdfPathWin}/components",
+            "${workspaceFolder}"
+          ]
+        },
+
+        "windowsSdkVersion": "10.0.22621.0",
+        "intelliSenseMode":  "windows-msvc-x64"
+
+      }
+    ],
+
+    "version": 4
+}
+

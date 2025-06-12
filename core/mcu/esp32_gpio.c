@@ -8,7 +8,6 @@
  *  @last rev   6/12/25
  *
  *  @section    Opens
- *		Wake
  *		Demo
  *		Publish
  *      
@@ -46,7 +45,7 @@
 //-----------------------------------------  Definitions -----------------------------------------//
 
 //Driver Version
-#define GPIO_DRIVER_VERS        "0.3"
+#define GPIO_DRIVER_VERS        "0.4"
 
 
 //-------------------------------------------- Macros --------------------------------------------//
@@ -325,46 +324,6 @@ GpioConfig *gpio_getConfig(void) {
 void *gpio_getInfo(void) {
 
     return NULL;
-}
-
-
-/**************************************************************************************************/
-/** @fcn        int gpio_getState(void)
- *  @brief      Retrieve current operational state
- *  @details    e.g. output values
- *
- *  @return   (int) current driver value
- *
- *  @pre    any
- *  post    x
- *
- *  @section    Opens
- *      Define & implement state & routine
- */
-/**************************************************************************************************/
-int gpio_getState(void) {
-
-    return 0;
-}
-
-
-/**************************************************************************************************/
-/** @fcn        void gpio_setState(int val)
- *  @brief      Update operational state with new value
- *  @details    e.g. output values or peripheral config
- *
- *  @param    [in]  (int) val - update driver value to set
- *
- *  @pre    gpio_init()
- *  @post   state value update is applied to the peripheral
- *
- *  @section    Opens
- *      Define & implement state & routine
- */
-/**************************************************************************************************/
- void gpio_setState(int val) {
-    
-    return;
 }
 
 

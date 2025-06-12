@@ -93,10 +93,6 @@ extern void gpio_setConfig(GpioConfig *cfg);
 extern GpioConfig *gpio_getConfig(void);            /* applied configuration for use              */
 extern void *gpio_getInfo(void);                    /* current operational state                  */
 
-//Get-Set
-extern int  gpio_getState(void);
-extern void gpio_setState(int val);
-
 //Read-Write
 extern bool gpio_read(GpioPinId pin_id);
 extern bool gpio_write(GpioPinId pin_id, bool val);

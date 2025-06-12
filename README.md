@@ -44,6 +44,6 @@ Used for development & validation of ESP32 GPIO driver
 
 - v0.3 - gpio interrupt()
 
-- _(pending)_ v0.4 - gpio wakeup()
+- v0.4 - gpio wakeup()
 
 - _(pending)_ v1 - C GPIO driver release

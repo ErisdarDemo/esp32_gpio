@@ -7,7 +7,7 @@
 
 //-----------------------------------------  Definitions -----------------------------------------//
 
-#define NUM_SYSTEM_STATUS_CODES     (5)
+#define NUM_SYSTEM_STATUS_CODES     (4)
 
 
 //------------------------------------------- Typedefs -------------------------------------------//
@@ -17,11 +17,10 @@
  * @details     Naming generic for re-use
  */
 typedef enum {
-    STATUS_OK          = 0,
-    STATUS_WARN        = 1,
-    STATUS_ERR         = 2,
-    STATUS_ERR_STATE_A = 3,
-    STATUS_ERR_STATE_B = 4,
+    STATUS_OK      = 0,
+    STATUS_WARN    = 1,
+    STATUS_ERR     = 2,
+    STATUS_UNKNOWN = 3,
 } status_code;
 
 
@@ -30,9 +29,11 @@ typedef enum {
 //************************************************************************************************//
 
 //Public
-extern status_code system_initialize(void);         /* and section divs (e.g. 'DECLARATIONS' here)
-                                                       are also not recommended for lightweight 
-                                                       interface files like this either - 'KISS'  */
+extern status_code system_initialize(void);
+
+//Handles
+extern void demo_isr_handler(void);                 /* For ext. interrupt config to driver        */
+
 extern void delay_ms(int t_ms);
 
 

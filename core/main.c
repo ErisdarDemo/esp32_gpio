@@ -8,16 +8,10 @@
  *  @last rev 6/12/25
  *
  *  @section    Opens
- *      GPIO Wake From Sleep
- *		...
  *		Demo publishes detailed narration & instruction for demo
- *      ...
- *      complete
- *		test
- *      publish
- *		...
- *		! use a wiki page to track & collect bug reports in your new sweep (including published 
- *		  procedure!)
+ *      Complete
+ *		Test
+ *      Publish
  *
  *  @note   use esp32_system api for sleep modes
  *

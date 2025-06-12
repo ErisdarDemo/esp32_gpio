@@ -8,7 +8,6 @@
  *  @last rev   6/12/25
  *
  *  @section    Opens
- *		Toggle
  *		Interrupt
  *		Wake
  *		Demo
@@ -419,6 +418,40 @@ bool gpio_write(GpioPinId pin_id, bool val) {
 
     //Check
     return gpio_read(GPIO_DO_0);
+}
+
+
+/**************************************************************************************************/
+/** @fcn        void gpio_toggle(GpioPinId pin_id)
+ *  @brief      toggle GPIO pin output value
+ *  @details    x
+ *
+ *  @param    [in]  (GpioPinId) pin_id - GPIO pin number
+ * 
+ *  @return  (bool) new pin output value
+ *
+ *  @pre    gpio_init() & pin_id is configured for OUTPUT
+ *  @post   pin value is toggled
+ *
+ *  @section    Opens
+ *      Safety (check if write access enabled & pin configured before op)
+ */
+/**************************************************************************************************/
+bool gpio_toggle(GpioPinId pin_id) {
+
+    //Locals
+    bool pin_val = false;                                   /* monitored pin value                */
+
+    //Read
+    pin_val = gpio_read(GPIO_DO_0);
+
+    //Update
+    gpio_write(GPIO_DO_0, !pin_val);
+
+    //Check
+    pin_val = gpio_read(GPIO_DO_0);
+
+    return pin_val;
 }
 
 

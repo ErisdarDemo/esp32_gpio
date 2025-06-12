@@ -98,6 +98,7 @@ extern void gpio_setState(int val);
 //Read-Write
 extern bool gpio_read(GpioPinId pin_id);
 extern bool gpio_write(GpioPinId pin_id, bool val);
+extern bool gpio_toggle(GpioPinId pin_id);
 
 //Log
 extern void *gpio_getLog(void);

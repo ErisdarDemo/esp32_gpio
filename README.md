@@ -40,7 +40,7 @@ Used for development & validation of ESP32 GPIO driver
 
 - v0.1 - gpio read()
 
-- _(pending)_v0.2 - gpio write()
+- v0.2 - gpio write()
 
 - _(pending)_v0.3 - gpio interrupt()
 

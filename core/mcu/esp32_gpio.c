@@ -8,7 +8,6 @@
  *  @last rev   6/12/25
  *
  *  @section    Opens
- *		Write
  *		Toggle
  *		Interrupt
  *		Wake
@@ -49,7 +48,7 @@
 //-----------------------------------------  Definitions -----------------------------------------//
 
 //Driver Version
-#define GPIO_DRIVER_VERS        "0.1"				/* driver in development					  */
+#define GPIO_DRIVER_VERS        "0.2"
 
 
 //-------------------------------------------- Macros --------------------------------------------//
@@ -87,7 +86,16 @@ static GpioConfig gpioCfg =  {
                         .pull_up_en   = GPIO_PULLUP_DISABLE,
                         .pull_down_en = GPIO_PULLDOWN_DISABLE,
                         .intr_type    = GPIO_INTR_DISABLE,
-                       }
+                       },
+    .pins[GPIO_DO_0] = {
+                        .pin_id       = GPIO_DO_0,
+                        .pin_num      = GPIO_PIN_DO_0_NUM,
+                        .pin_init     = false,
+                        .mode         = GPIO_MODE_INPUT_OUTPUT ,    /* Output pin                 */
+                        .pull_up_en   = GPIO_PULLUP_DISABLE,
+                        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+                        .intr_type    = GPIO_INTR_DISABLE,
+                      }
 };
 
 
@@ -384,22 +392,33 @@ bool gpio_read(GpioPinId pin_id) {
 
 
 /**************************************************************************************************/
-/** @fcn        void gpio_write(int val)
- *  @brief      Write driver values
- *  @details    e.g. stream inputs or peripheral state
+/** @fcn        bool gpio_write(GpioPinId pin_id, bool val)
+ *  @brief      set GPIO pin output value
+ *  @details    x
  *
- *  @param    [in]  (int) update driver value to apply
+ *  @param    [in]  (GpioPinId) pin_id - GPIO pin number
+ *  @param    [in]  (bool) val - new pin output value to apply
+ * 
+ *  @return  (bool) new pin output value
  *
- *  @pre    gpio_init()
- *  @post   written value is applied to the peripheral
+ *  @pre    gpio_init() & pin_id is configured for OUTPUT
+ *  @post   written value is applied to the GPIO peripheral
  *
  *  @section    Opens
- *      Define & implement state & routine
+ *      Safety (check if write access enabled & pin configured before op)
  */
 /**************************************************************************************************/
-void gpio_write(int val) {
+bool gpio_write(GpioPinId pin_id, bool val) {
 
-    return;
+    //Locals
+    int pin_num = gpioCfg.pins[pin_id].pin_num;             /* e.g. '21' for GPIO_PIN_21          */
+    int pin_val = (val == true) ? 1:0;                      /* api uses integers                  */
+
+    //Update
+    gpio_set_level(pin_num, pin_val);
+
+    //Check
+    return gpio_read(GPIO_DO_0);
 }
 
 

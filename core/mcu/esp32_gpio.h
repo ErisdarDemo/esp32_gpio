@@ -22,10 +22,11 @@
 //-----------------------------------------  Definitions -----------------------------------------//
 
 //Definitions
-#define GPIO_NUM_PINS                 (1)
+#define GPIO_NUM_PINS                 (2)
 
 //GPIO Pin Number
 #define GPIO_PIN_DI_0_NUM             (GPIO_NUM_4)
+#define GPIO_PIN_DO_0_NUM             (GPIO_NUM_5)
 
 
 //-------------------------------------------- Macros --------------------------------------------//
@@ -38,7 +39,8 @@
 
 //Pin ID (also for array index access)
 typedef enum {
-    GPIO_DI_0    = 0                                /* Demo Input Pin for manual DC value test    */
+    GPIO_DI_0    = 0,                               /* Demo Input Pin for manual DC value test    */
+	GPIO_DO_0    = 1                                /* Demo Output Pin for manual DC value test   */
 } GpioPinId;
 
 
@@ -95,7 +97,7 @@ extern void gpio_setState(int val);
 
 //Read-Write
 extern bool gpio_read(GpioPinId pin_id);
-extern void gpio_write(int val);
+extern bool gpio_write(GpioPinId pin_id, bool val);
 
 //Log
 extern void *gpio_getLog(void);

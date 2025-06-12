@@ -50,8 +50,8 @@ status_code mcu_initialize(void) {
 
     //---------------------------------------- Initialize ----------------------------------------//
 
-	//Drivers
-	gpio_init();
+    //Drivers
+    gpio_init();
 
 
     //Notify

@@ -46,4 +46,6 @@ Used for development & validation of ESP32 GPIO driver
 
 - v0.4 - gpio wakeup()
 
-- _(pending)_ v1 - C GPIO driver release
+- v1.0 - C GPIO driver release
+
+- _(pending)_ v1.1 - Driver unit test support

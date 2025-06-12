@@ -29,11 +29,6 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>lbr</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
 			<name>appl/demo_gpio.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/appl/demo_gpio.c</locationURI>
@@ -54,11 +49,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/core/main.c</locationURI>
 		</link>
 		<link>
-			<name>core/main.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/core/main.h</locationURI>
-		</link>
-		<link>
 			<name>core/mcu</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -72,26 +62,6 @@
 			<name>core/system</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>lbr/.vscode</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>lbr/CMakeLists.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/lbr/CMakeLists.txt</locationURI>
-		</link>
-		<link>
-			<name>lbr/utils.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/lbr/utils.c</locationURI>
-		</link>
-		<link>
-			<name>lbr/utils.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/lbr/utils.h</locationURI>
 		</link>
 		<link>
 			<name>core/mcu/esp32_gpio.c</name>
@@ -132,11 +102,6 @@
 			<name>core/system/system.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/core/system/system.h</locationURI>
-		</link>
-		<link>
-			<name>lbr/.vscode/c_cpp_properties.json</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/lbr/.vscode/c_cpp_properties.json</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

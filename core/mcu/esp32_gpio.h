@@ -30,12 +30,6 @@
 #define GPIO_PIN_ISR_NUM              (GPIO_NUM_6)
 
 
-//-------------------------------------------- Macros --------------------------------------------//
-
-
-//----------------------------------------- Enumerations -----------------------------------------//
-
-
 //------------------------------------------- Typedefs -------------------------------------------//
 
 //Pin ID (also for array index access)
@@ -67,11 +61,6 @@ typedef struct {
 
 
 //************************************************************************************************//
-//                                            VARIABLES                                           //
-//************************************************************************************************//
-
-
-//************************************************************************************************//
 //                                       FUNCTION DECLARATIONS                                    //
 //************************************************************************************************//
 
@@ -79,33 +68,14 @@ typedef struct {
 
 //Setup
 extern status_code gpio_init(void);
-extern void gpio_enable(void);
-extern void gpio_disable(void);
-
-//Action
-extern void  gpio_start(void);
-extern void  gpio_stop(void);
-extern void *gpio_status(void);                     /* current status of API performance          */
-extern void  gpio_reset(void);
-
-//Configure
-extern void gpio_setConfig(GpioConfig *cfg);
-extern GpioConfig *gpio_getConfig(void);            /* applied configuration for use              */
-extern void *gpio_getInfo(void);                    /* current operational state                  */
 
 //Read-Write
 extern bool gpio_read(GpioPinId pin_id);
 extern bool gpio_write(GpioPinId pin_id, bool val);
 extern bool gpio_toggle(GpioPinId pin_id);
 
-//Log
-extern void *gpio_getLog(void);
-
 //Util
 extern char *gpio_getVersion(void);
-
-
-//-------------------------------------------- Private -------------------------------------------//
 
 
 #endif /*  MCU_GPIO_H */

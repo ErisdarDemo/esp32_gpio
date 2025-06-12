@@ -9,10 +9,6 @@
             "path": "../doc"
         },
         {
-            "name": "lbr",
-            "path": "../lbr"
-        },
-        {
             "name": "core",
             "path": "../core"
         },

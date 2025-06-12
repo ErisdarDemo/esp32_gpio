@@ -2,9 +2,6 @@
 /** @file       system.c
  *  @brief      System operations & utility
  *  @details    x
- *
- * @section     Opens
- *     system_getStatus()
  */
 /**************************************************************************************************/
 
@@ -21,7 +18,6 @@
 
 //Project Includes
 #include "mcu.h"
-#include "rtos.h"
 #include "system.h"
 
 
@@ -42,9 +38,6 @@
 /**************************************************************************************************/
 status_code system_initialize(void) {
 
-    //Locals
-
-
     //--------------------------------------- Init Console ---------------------------------------// 
 
     //Header
@@ -60,18 +53,12 @@ status_code system_initialize(void) {
 
     //Detail
     mcu_print_info();
-            
-
-    //---------------------------------------- Init RTOS -----------------------------------------//
-    rtos_init();
-
 
     //Notify
     printf("system_initialize(): System is prepared for application.\n\n");
 
     return STATUS_OK;
 }
-
 
 
 /**************************************************************************************************/

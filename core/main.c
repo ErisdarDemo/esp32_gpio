@@ -8,10 +8,7 @@
  *  @last rev 6/12/25
  *
  *  @section    Opens
- *		Demo publishes detailed narration & instruction for demo
- *      Complete
- *		Test
- *      Publish
+ *      none listed
  *
  *  @note   use esp32_system api for sleep modes
  *

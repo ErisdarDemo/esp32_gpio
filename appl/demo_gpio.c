@@ -4,7 +4,8 @@
  *  @details    x
  *
  *  @section    Opens
- *      debounced interrupt response
+ *      Debounced interrupt response
+ *      Unit test support
  */
 /**************************************************************************************************/
 
@@ -88,75 +89,75 @@ static void setup_boot0_gpio_wakeup(void);
 /**************************************************************************************************/
 void demo_gpio(void) {
 
-	//Locals
-	bool rd_val             = false;                /* Demo GPIO read value                       */
-	char *driverVer         = NULL;                 /* Driver API request ptr                     */    
-	char buff[MAX_BUFF_LEN] = {0};                  /* Console print buffer                       */
+    //Locals
+    bool rd_val             = false;                /* Demo GPIO read value                       */
+    char *driverVer         = NULL;                 /* Driver API request ptr                     */    
+    char buff[MAX_BUFF_LEN] = {0};                  /* Console print buffer                       */
 
 
-	//------------------------------------------- Init -------------------------------------------//
+    //------------------------------------------- Init -------------------------------------------//
 
-	//Init Variables
-	memset(&buff[0], 0x00, MAX_BUFF_LEN);
+    //Init Variables
+    memset(&buff[0], 0x00, MAX_BUFF_LEN);
 
-	driverVer = gpio_getVersion();
-	
-	
+    driverVer = gpio_getVersion();
+    
+    
     //----------------------------------------- Operate ------------------------------------------//
-	
+    
     for(;;) {
-		
-		//****************************************************************************************//
-		//                                          WRITE                                         //
-		//****************************************************************************************//
+        
+        //****************************************************************************************//
+        //                                          WRITE                                         //
+        //****************************************************************************************//
 
-		//Write
-		gpio_write(GPIO_DO_0, false);
-		gpio_write(GPIO_DO_0, true);
-		gpio_write(GPIO_DO_0, false);
-
-
-		//****************************************************************************************//
-		//                                         TOGGLE                                         //
-		//****************************************************************************************//
-
-		//Toggle
-		gpio_toggle(GPIO_DO_0);
-		gpio_toggle(GPIO_DO_0);
-		gpio_toggle(GPIO_DO_0);
+        //Write
+        gpio_write(GPIO_DO_0, false);
+        gpio_write(GPIO_DO_0, true);
+        gpio_write(GPIO_DO_0, false);
 
 
-		//****************************************************************************************//
-		//                                          READ                                          //
-		//****************************************************************************************//
+        //****************************************************************************************//
+        //                                         TOGGLE                                         //
+        //****************************************************************************************//
 
-		//Read
-		rd_val = gpio_read(GPIO_DI_0);
+        //Toggle
+        gpio_toggle(GPIO_DO_0);
+        gpio_toggle(GPIO_DO_0);
+        gpio_toggle(GPIO_DO_0);
 
 
-		//Response
-		sprintf(&buff[0], "demo_gpio(v%s) - READ(GPIO%d): %d, ISR(GPIO%d): %d\n\n",
-		                                                 driverVer,
-		                                                 GPIO_PIN_DI_0_NUM, 
-		                                                 rd_val, 
-		                                                 GPIO_PIN_ISR_NUM,  
-		                                                 demo_isr_ctr);						
-		//Notify
-		printf((const char *)&buff[0]);
-		
-		
-		//****************************************************************************************//
-		//                                         WAKEUP                                         //
-		//****************************************************************************************//
+        //****************************************************************************************//
+        //                                          READ                                          //
+        //****************************************************************************************//
 
-		//Sleep Demo                                        
-		demo_light_sleep();                         /* wake from boot0 button                     */
+        //Read
+        rd_val = gpio_read(GPIO_DI_0);
 
-		
-	    //------------------------------------------ Post ----------------------------------------//
 
-	    //Loop
-	    delay_ms(DEMO_DELAY_MS);
+        //Response
+        sprintf(&buff[0], "demo_gpio(v%s) - READ(GPIO%d): %d, ISR(GPIO%d): %d\n\n",
+                                                         driverVer,
+                                                         GPIO_PIN_DI_0_NUM, 
+                                                         rd_val, 
+                                                         GPIO_PIN_ISR_NUM,  
+                                                         demo_isr_ctr);                     
+        //Notify
+        printf((const char *)&buff[0]);
+        
+        
+        //****************************************************************************************//
+        //                                         WAKEUP                                         //
+        //****************************************************************************************//
+
+        //Sleep Demo                                        
+        demo_light_sleep();                         /* wake from boot0 button                     */
+
+        
+        //------------------------------------------ Post ----------------------------------------//
+
+        //Loop
+        delay_ms(DEMO_DELAY_MS);
 
     }
 }

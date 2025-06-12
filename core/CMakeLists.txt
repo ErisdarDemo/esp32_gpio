@@ -11,7 +11,6 @@ idf_component_register(
                        SRC_DIRS
                          "."
                          "../appl"
-                         "../lbr"
                          "mcu"
                          "rtos"
                          "system"
@@ -22,7 +21,6 @@ idf_component_register(
                        INCLUDE_DIRS
                          "." 
                          "../appl"
-                         "../lbr"
                          "mcu"
                          "rtos"
                          "system"

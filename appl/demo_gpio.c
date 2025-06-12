@@ -49,6 +49,9 @@
 //                                            VARIABLES                                           //
 //************************************************************************************************//
 
+//Activity Count
+static int demo_isr_ctr = 0;
+
 
 //************************************************************************************************//
 //                                       FUNCTION DECLARATIONS                                    //
@@ -117,8 +120,12 @@ void demo_gpio(void) {
 
 
 		//Response
-		sprintf(&buff[0], "demo_gpio(v%s) - READ(GPIO%d): %d\n\n", driverVer, GPIO_PIN_DI_0_NUM, rd_val);
-		
+		sprintf(&buff[0], "demo_gpio(v%s) - READ(GPIO%d): %d, ISR(GPIO%d): %d\n\n",
+		                                                 driverVer,
+		                                                 GPIO_PIN_DI_0_NUM, 
+		                                                 rd_val, 
+		                                                 GPIO_PIN_ISR_NUM,  
+		                                                 demo_isr_ctr);						
 		//Notify
 		printf((const char *)&buff[0]);
 		
@@ -129,5 +136,25 @@ void demo_gpio(void) {
 	    delay_ms(DEMO_DELAY_MS);
 
     }
+}
+
+
+/**************************************************************************************************/
+/** @fcn        void demo_isr_handler(void)
+ *  @brief      Example application interrupt response
+ *  @details    Response to configured GPIO interrupt response activity
+ *
+ *  @section    Operation
+ *      non-blocking routine
+ *
+ *  @note   application space interrupt handle with system module interface for gpio driver use
+ */
+/**************************************************************************************************/
+void demo_isr_handler(void) {
+
+    //Record
+    demo_isr_ctr++;
+
+    return;
 }
 

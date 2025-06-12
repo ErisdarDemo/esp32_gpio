@@ -8,7 +8,6 @@
  *  @last rev 6/12/25
  *
  *  @section    Opens
- *      GPIO Interrupt
  *      GPIO Wake From Sleep
  *		...
  *		Demo publishes detailed narration & instruction for demo

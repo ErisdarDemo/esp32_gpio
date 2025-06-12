@@ -8,7 +8,6 @@
  *  @last rev   6/12/25
  *
  *  @section    Opens
- *		Interrupt
  *		Wake
  *		Demo
  *		Publish
@@ -47,7 +46,7 @@
 //-----------------------------------------  Definitions -----------------------------------------//
 
 //Driver Version
-#define GPIO_DRIVER_VERS        "0.2"
+#define GPIO_DRIVER_VERS        "0.3"
 
 
 //-------------------------------------------- Macros --------------------------------------------//
@@ -94,7 +93,15 @@ static GpioConfig gpioCfg =  {
                         .pull_up_en   = GPIO_PULLUP_DISABLE,
                         .pull_down_en = GPIO_PULLDOWN_DISABLE,
                         .intr_type    = GPIO_INTR_DISABLE,
-                      }
+                       },
+    .pins[GPIO_DI_ISR] =  {
+                        .pin_id       = GPIO_DI_ISR,
+                        .pin_num      = GPIO_PIN_ISR_NUM,
+                        .mode         = GPIO_MODE_INPUT,            /* Input pin                  */
+                        .pull_up_en   = GPIO_PULLUP_ENABLE,
+                        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+                        .intr_type    = GPIO_INTR_POSEDGE,          /* Enable interrupt           */
+                       }
 };
 
 
@@ -475,10 +482,12 @@ void *gpio_getLog(void) {
 
 
 /**************************************************************************************************/
-/** @fcn        void gpio_callback(void)
+/** @fcn        static void gpio_isr_handler(void* arg)
  *  @brief      Default peripheral interrupt callback
  *  @details    x
  *
+ *  @param    [in]  (void *) arg - isr config handle
+ * 
  *  @section    Purpose
  *      Default interrupt handler for secure driver use
  *
@@ -486,10 +495,15 @@ void *gpio_getLog(void) {
  *  @post   interrupt vector is reset
  *
  *  @section    Opens
- *      Define & implement driver state & routine
+ *      Consider IRAM ('IRAM_ATTR') loc for faster callback
+ *      Debounce!!
+ *      Pin specific interrupt responses
  */
 /**************************************************************************************************/
-void gpio_callback(void) {
+static void gpio_isr_handler(void* arg) {
+
+    //Record
+    demo_isr_handler();
 
     return;
 }
@@ -548,11 +562,30 @@ static status_code gpio_pin_init(GpioPinConfig *pinCfg) {
 
 
     //------------------------------------ Interrupt Support -------------------------------------//
-	//@open       
+
+	//Interrupt Setup
+	if(pinCfg->intr_type != GPIO_INTR_DISABLE) {
+
+	    //Change gpio interrupt type for pin
+	    gpio_set_intr_type(pinCfg->pin_num, pinCfg->intr_type);
+
+	    //Install gpio isr service
+	    gpio_install_isr_service(pinCfg->intr_flags);
+
+	    //Hook isr handler for specific gpio pin
+	    gpio_isr_handler_add(pinCfg->pin_num, gpio_isr_handler, (void*) pinCfg->pin_num);
+	}      
 
 
     //-------------------------------------- Output Config ---------------------------------------//
-	//@open
+	
+	//Output Setup
+	if((pinCfg->mode == GPIO_MODE_OUTPUT)          | (pinCfg->mode == GPIO_MODE_OUTPUT_OD) |
+	   (pinCfg->mode == GPIO_MODE_INPUT_OUTPUT_OD) | (pinCfg->mode == GPIO_MODE_INPUT_OUTPUT)) {
+
+	    //Apply Output Value
+	    gpio_write(pinCfg->pin_id, pinCfg->pin_init);
+	}
 
 
     //Post

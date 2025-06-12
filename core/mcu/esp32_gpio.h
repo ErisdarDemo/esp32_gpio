@@ -22,11 +22,12 @@
 //-----------------------------------------  Definitions -----------------------------------------//
 
 //Definitions
-#define GPIO_NUM_PINS                 (2)
+#define GPIO_NUM_PINS                 (3)
 
 //GPIO Pin Number
 #define GPIO_PIN_DI_0_NUM             (GPIO_NUM_4)
 #define GPIO_PIN_DO_0_NUM             (GPIO_NUM_5)
+#define GPIO_PIN_ISR_NUM              (GPIO_NUM_6)
 
 
 //-------------------------------------------- Macros --------------------------------------------//
@@ -40,7 +41,8 @@
 //Pin ID (also for array index access)
 typedef enum {
     GPIO_DI_0    = 0,                               /* Demo Input Pin for manual DC value test    */
-	GPIO_DO_0    = 1                                /* Demo Output Pin for manual DC value test   */
+    GPIO_DO_0    = 1,                               /* Demo Output Pin for manual DC value test   */
+    GPIO_DI_ISR  = 2,                               /* Demo ISR Input Pin for interrupt test      */
 } GpioPinId;
 
 
@@ -102,9 +104,6 @@ extern bool gpio_toggle(GpioPinId pin_id);
 
 //Log
 extern void *gpio_getLog(void);
-
-//Int
-extern void gpio_callback(void);                    /* default peripheral interrupt callback      */
 
 //Util
 extern char *gpio_getVersion(void);
